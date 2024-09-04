@@ -1,0 +1,22 @@
+<div>
+    @if (errorMessage) {
+    <p class="errorMessage">{{ errorMessage }}</p>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="applicantName">Nome do Solicitante:</label>
+            <input id="applicantName" formControlName="applicantName" type="text">
+        </div>
+        <div>
+            <label for="itemDescription">Descrição do item:</label>
+            <input id="itemDescription" formControlName="itemDescription" type="text">
+        </div>
+        <div>
+            <label for="itemPrice">Preço:</label>
+            <input id="itemPrice" formControlName="itemPrice" [value]="formattedPrice" (input)="onPriceInput($event)"
+                type="text">
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</div>

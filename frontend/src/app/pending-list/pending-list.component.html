@@ -1,0 +1,32 @@
+<div>
+    @if (errorMessage) {
+    <p class="errorMessage">{{ errorMessage }}</p>
+    }
+
+    @if (requests | async; as requests) {
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Solicitante</th>
+                <th>Preço</th>
+                <th>Descrição do Item</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (request of requests; track $index) {
+            <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.applicantName }}</td>
+                <td>{{ request.getFormattedPrice() }}</td>
+                <td>{{ request.itemDescription }}</td>
+                <td>
+                    <button (click)="navigateToJudge(request.id)">Aprovar/Rejeitar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+</div>
